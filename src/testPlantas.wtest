@@ -1,0 +1,66 @@
+import plantas.*
+
+test "Test de las plantas" {
+	/*Creación de las instancias de Menta*/
+	const plantaMenta = new Menta()
+	plantaMenta.altura(1)
+	
+	const plantaMenta2 = new Menta()
+	plantaMenta2.altura(0.3)
+	
+	/*Test a la plantaMenta*/
+	assert.that(plantaMenta.daNuevasSemillas())
+	assert.equals(3, plantaMenta.espacioQueOcupa())
+	
+	/*Test a la plantaMenta2*/
+	assert.notThat(plantaMenta2.daNuevasSemillas())
+	assert.equals(0.9, plantaMenta2.espacioQueOcupa())
+	
+	/*Creación de la instancia de Soja*/
+	const soja = new Soja()
+	soja.altura(0.6)
+	soja.anioDeObtencionDeSemilla(2009)
+	
+	/*Test a la planta soja*/
+	assert.equals(8, soja.horasDeSolQueTolera())
+	assert.notThat(soja.daNuevasSemillas()) 
+	assert.equals(0.3, soja.espacioQueOcupa())
+	
+	/*Creacion de las instancias de Quinoa*/
+	const quinoa = new Quinoa()
+	quinoa.valorDeEspacioQueOcupa(0.2)
+	quinoa.anioDeObtencionDeSemilla(2010)
+	
+	const quinoaDos = new Quinoa()
+	quinoa.valorDeEspacioQueOcupa(0.9)
+	quinoa.anioDeObtencionDeSemilla(2003)	
+	
+	/*Test a la planta quinoa*/
+	assert.that(quinoa.daNuevasSemillas())
+	
+	/*Test a la planta quinoaDos*/
+	assert.that(quinoaDos.daNuevasSemillas())
+	
+	/*Creación de la instancia SojaTransgenica*/
+	const sojaTransgenica = new SojaTransgenica()
+	
+	/*Test a la planta sojaTransgenica*/
+	assert.notThat(sojaTransgenica.daNuevasSemillas())
+	
+	/*Creación de la instancia MentaPeperina*/
+	const mentaPeperina = new MentaPeperina() 
+	mentaPeperina.altura(1)
+	
+	/*test a la mentaPeperina para asegurar que tiene el doble de espacio que ocupa
+	  que una Menta común*/
+	assert.equals(6, mentaPeperina.espacioQueOcupa()) //ocupa el doble que la menta
+	
+	
+	 
+	
+	
+	
+	
+	
+
+}

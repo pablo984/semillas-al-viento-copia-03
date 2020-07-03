@@ -1,0 +1,70 @@
+import plantas.*
+import parcelas.*
+
+
+test "Test de las parcelas" {
+	/*Creación de la instancia de ParcelaEcologica*/
+	const parcelaEcologica = new ParcelaEcologica()
+	parcelaEcologica.ancho(20)
+	parcelaEcologica.largo(1)
+	parcelaEcologica.horasDeSolPorDia(10)
+	
+	/*Test a la instancia parcelaEcologica*/
+	assert.equals(20, parcelaEcologica.superficieDeParcela())
+	assert.equals(4, parcelaEcologica.cantidadMaxDePlantasQueTolera())
+	
+	/*Creación de las instancias de Soja y agregado de 4 plantas a la parcelaEcologica*/
+	const soja1 = new Soja()
+	soja1.altura(1.7)
+	soja1.anioDeObtencionDeSemilla(2010)
+	const soja2 = new Soja()
+	soja2.altura(1.7)
+	soja2.anioDeObtencionDeSemilla(2010)
+	const soja3 = new Soja()
+	soja3.altura(1.7)
+	soja3.anioDeObtencionDeSemilla(2010)
+	const soja4 = new Soja()
+	soja4.altura(1.7)
+	soja4.anioDeObtencionDeSemilla(2010)
+	const soja5 = new Soja()
+	soja5.altura(1.7)
+	soja5.anioDeObtencionDeSemilla(2010)
+	
+	parcelaEcologica.agregarPlanta(soja1)
+	parcelaEcologica.agregarPlanta(soja2)
+	parcelaEcologica.agregarPlanta(soja3)
+	parcelaEcologica.agregarPlanta(soja4)
+	
+	/*Test a la parcelaEcologica*/
+	assert.notThat(parcelaEcologica.tieneSangreJoven())
+	
+	/*Error al intentar plantar otra planta*/
+	parcelaEcologica.plantar(soja5) //error impreso en la Consola
+	
+	/*test para saber si a una menta le resulta ideal una parcela*/
+	/*Creación de las instancias de Menta, Quinoa, Soja y SojaTransgénica*/
+	const plantaMenta = new Menta()
+	plantaMenta.altura(1)
+	
+	const quinoa = new Quinoa()
+	quinoa.valorDeEspacioQueOcupa(0.2)
+	quinoa.anioDeObtencionDeSemilla(2010)
+	
+	const soja = new Soja()
+	soja.altura(0.6)
+	soja.anioDeObtencionDeSemilla(2009)
+	
+	const sojaTransgenica = new SojaTransgenica()	
+	
+	/*Test a la instancias de las plantas para ver si le resulta ideal una parcela*/
+	assert.that(plantaMenta.leResultaIdeal(parcelaEcologica))
+	assert.notThat(quinoa.leResultaIdeal(parcelaEcologica)) 
+	assert.notThat(soja.leResultaIdeal(parcelaEcologica))
+	assert.notThat(sojaTransgenica.leResultaIdeal(parcelaEcologica))
+	
+	
+	
+	
+	
+
+}

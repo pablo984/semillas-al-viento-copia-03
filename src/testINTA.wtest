@@ -1,0 +1,66 @@
+import plantas.*
+import parcelas.*
+import inta.*
+
+
+test "Test INTA" {
+	/*Creación de las instancias de Menta*/
+	const plantaMenta = new Menta()
+	plantaMenta.altura(1)
+	
+	const plantaMenta2 = new Menta()
+	plantaMenta2.altura(0.3)
+	
+	const soja = new Soja()
+	soja.altura(0.6)
+	soja.anioDeObtencionDeSemilla(2009)
+	
+	const quinoa = new Quinoa()
+	quinoa.valorDeEspacioQueOcupa(0.2)
+	quinoa.anioDeObtencionDeSemilla(2010)
+	
+	const quinoaDos = new Quinoa()
+	quinoa.valorDeEspacioQueOcupa(0.9)
+	quinoa.anioDeObtencionDeSemilla(2003)
+	
+	const sojaTransgenica = new SojaTransgenica()
+	
+	const mentaPeperina = new MentaPeperina() 
+	mentaPeperina.altura(1)
+	
+	/*Creación de la instancia de ParcelaEcologica*/
+	const parcelaEcologica = new ParcelaEcologica()
+	parcelaEcologica.ancho(20)
+	parcelaEcologica.largo(1)
+	parcelaEcologica.horasDeSolPorDia(10)
+	
+	/*Creación de la instancia de ParcelaIndustrial*/
+	const parcelaIndustrial = new ParcelaIndustrial()
+	parcelaIndustrial.ancho(15)
+	parcelaIndustrial.largo(2)
+	parcelaIndustrial.horasDeSolPorDia(12)
+	
+	/*Agregado de plantas a las parcelas*/
+	parcelaEcologica.agregarPlanta(soja)
+	parcelaEcologica.agregarPlanta(plantaMenta)
+	parcelaEcologica.agregarPlanta(plantaMenta2)
+	parcelaEcologica.agregarPlanta(mentaPeperina)
+	parcelaEcologica.agregarPlanta(quinoaDos)
+	
+	
+	parcelaIndustrial.agregarPlanta(quinoa)
+	parcelaIndustrial.agregarPlanta(sojaTransgenica)	
+	
+	
+	/*Agregado de las parcelas al INTA */
+	inta.agregarParcela(parcelaEcologica)
+	inta.agregarParcela(parcelaIndustrial)
+	
+	/*Test al INTA*/
+	assert.equals(3.5, inta.promedioDePlantas())
+	//assert.equals([parcelaEcologica], inta.parcelaMasAutosustentable())	No me dio el tiempo
+	
+	
+	
+
+}
